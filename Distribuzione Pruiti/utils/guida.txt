@@ -1,0 +1,162 @@
+Da fare
+
+pagina profilo
+pagina copertone e/o carrello
+migliorare register
+possibilità di inserire gli sconti
+implementare i pagamenti
+impostare informazioni legali
+implementare google analitics e adsense se giacomo vuole
+pagina verifica token email (forse)
+
+mysql -h localhost -u root -D Distribuzione_P
+
+-----------
+
+1. Informazioni generali
+
+Indica qui:
+
+Nome dell’azienda
+Sede legale
+Partita IVA
+Email e contatti
+
+Esempio:
+
+Il presente sito è gestito da [Nome Azienda], con sede in [indirizzo], P.IVA [numero], contattabile all’indirizzo email [email].
+
+2. Oggetto del servizio
+
+Il sito consente la vendita online di copertoni per diverse tipologie di veicoli, tra cui auto, moto e mezzi commerciali. Tutti i prodotti sono descritti nelle relative schede informative.
+
+3. Registrazione e account
+
+L’utente può acquistare come ospite o creare un account. È responsabile della veridicità dei dati inseriti e della sicurezza delle credenziali.
+
+4. Prezzi e pagamenti
+
+I prezzi sono espressi in euro e includono/escludono IVA (specifica).
+Sono accettati i seguenti metodi di pagamento: [carta, PayPal, bonifico, ecc.].
+
+5. Spedizione e consegna
+
+Le spedizioni vengono effettuate entro [X giorni].
+I tempi di consegna possono variare in base alla destinazione.
+Eventuali ritardi non imputabili al venditore non danno diritto a risarcimento.
+
+6. Diritto di recesso
+
+(OBBLIGATORIO in UE)
+
+Il cliente ha diritto di recedere entro 14 giorni dalla consegna.
+Il prodotto deve essere restituito integro, non montato e nella confezione originale.
+Le spese di reso sono a carico di [cliente/azienda].
+
+7. Garanzia
+
+Tutti i prodotti sono coperti da garanzia legale di conformità di 24 mesi.
+Sono esclusi danni dovuti a uso improprio o montaggio scorretto.
+
+8. Responsabilità
+
+Il venditore non è responsabile per danni derivanti da uso non corretto dei copertoni o installazione non professionale.
+
+9. Legge applicabile
+
+Il contratto è regolato dalla legge italiana.
+
+---Struttura database---
+
+Utenti(ID, Nome, Cognome, età, email, cell, username, password, email-v, token, pfpic(WIP pag prf) )
+admin(ID, username, password)
+Copertoni(ID, Tipo varchar, Prezzo float, Quantità int,)
+
+----------DATABASE--------------
+CREATE DATABASE IF NOT EXISTS Distribuzione_P;
+USE Distribuzione_P;
+
+
+CREATE TABLE admin (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Copertoni (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Marca Varchar
+    Disegno varchar
+    Grandezza Varchar
+    Tipo VARCHAR(50) NOT NULL,
+    Prezzo DECIMAL(10,2) NOT NULL,
+);
+
+
+-- =========================
+-- POPOLAMENTO TABELLA UTENTI
+-- =========================
+
+INSERT INTO Utenti 
+(Nome, Cognome, eta, email, cell, username, password, email_v, token, pfpic)
+VALUES
+('Luca', 'Rossi', 25, 'luca.rossi@email.com', '3331234567', 'lucar', 'pass123', TRUE, NULL, 'luca.jpg'),
+('Marco', 'Bianchi', 31, 'marco.bianchi@email.com', '3339876543', 'marcob', 'pass456', TRUE, NULL, 'marco.png'),
+('Giulia', 'Verdi', 22, 'giulia.verdi@email.com', '3334567891', 'giuliav', 'pass789', FALSE, 'tok123', 'giulia.webp'),
+('Anna', 'Neri', 29, 'anna.neri@email.com', '3331122334', 'annan', 'anna2025', TRUE, NULL, 'anna.jpg'),
+('Davide', 'Esposito', 35, 'davide.esposito@email.com', '3339988776', 'davidee', 'davidepass', FALSE, 'tok999', 'davide.png');
+
+-- =========================
+-- POPOLAMENTO TABELLA ADMIN
+-- =========================
+
+INSERT INTO admin
+(username, password)
+VALUES
+('admin', 'admin123'),
+('superadmin', 'super456');
+
+-- =========================
+-- POPOLAMENTO TABELLA COPERTONI
+-- =========================
+
+INSERT INTO Copertoni
+(Tipo, Prezzo, Quantita)
+VALUES
+('Estivo 205/55 R16', 79.99, 25),
+('Invernale 195/65 R15', 89.50, 18),
+('All Season 225/45 R17', 110.00, 12),
+('SUV 235/60 R18', 145.99, 9),
+('Sportivo 245/40 R19', 199.99, 5),
+('Camion 315/70 R22.5', 320.50, 7);
+
+
+
+
+
+
+
+-----------------------------
+Post vetrina
+
+
+
+CREATE TABLE Problemi (
+    ID_P INT AUTO_INCREMENT PRIMARY KEY,
+    ID_utente INT AUTO_INCREMENT (chiave secondaria utente)
+    Utenti.username VARCHAR(50) NOT NULL,
+    Problema VARCHAR NOT NULL
+);
+
+CREATE TABLE Utenti (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL,
+    Cognome VARCHAR(50) NOT NULL,
+    eta INT,
+    email VARCHAR(100) UNIQUE,
+    cell VARCHAR(20),
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email_v BOOLEAN DEFAULT FALSE,
+    token VARCHAR(255)
+);

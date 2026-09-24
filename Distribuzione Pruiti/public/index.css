@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Sans+Hegarty&display=swap");
+
+body {
+    background-color: azure;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    display: flex;
+    background-color: rgb(10, 67, 124);
+    padding: 20px;
+    padding-bottom: 0px;
+    box-shadow: 5px 5px 5px;
+    border-bottom: 2px solid black;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    align-items: center;
+    position: static;
+}
+
+#tit {
+    color: #d11913;
+    text-shadow: 4px 1px 2px rgba(218, 0, 44, 0.5);
+    font-family: "BBH Sans Hegarty", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logo {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+}
+
+#links {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.link {
+    color: #d11913;
+    font-family: "Archivo Black", sans-serif;
+}
+
+/* ================= LAYOUT ================= */
+
+#Spazio {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* NAV SINISTRA */
+
+#navi {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: rgba(136, 210, 235, 0.316);
+    border: 2px solid #d11913;
+    overflow-y: auto;
+}
+
+#spazioc {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-content: flex-start;
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* ================= CARD ================= */
+
+.copertone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(136, 210, 235, 0.316);
+    border-radius: 40px;
+    border: #d11913 solid 2px;
+    height: 300px;
+    width: 300px;
+    padding: 30px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.copertone img {
+    object-fit: cover;
+    max-width: 60%;
+    max-height: 60%;
+}
+
+.copertone .h1 {
+    font-family: "BBH Sans Hegarty", sans-serif;
+    color: #d11913;
+    max-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: center;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.copertone .p {
+    color: black;
+}
+
+/* ================= BOTTONI ================= */
+
+#pcar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d11913;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#pcar:hover {
+    transform: scale(1.2);
+    background-color: #ff0800;
+}
+
+/* ================= FORM ================= */
+
+fieldset {
+    border: 2px solid #ff0800;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: rgb(8, 33, 58);
+    background-color: #ff0800;
+    padding: 5px 10px;
+}
+
+label {
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(8, 33, 58);
+}
+
+#search {
+    padding: 15px 40px;
+    border: 2px solid #d11913;
+    border-radius: 30px;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+#autocomplete {
+    position: absolute;
+    background: white;
+    width: 300px;
+    border: 1px solid #ddd;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 999;
+}
+
+#autocomplete.active {
+    max-height: 250px;
+    opacity: 1;
+    overflow-y: auto;
+}
+
+.suggerimento {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggerimento:hover {
+    background: #eee;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d11913;
+    border-radius: 10px;
+}
+
+#admin-link {
+    color: #aaaaaa;
+    font-size: 13px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    position: static;
+    margin: 0;
+    flex-shrink: 1;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100vh;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1 1 250px;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px solid #333;
+    font-size: 13px;
+    color: #aaaaaa;
+}
